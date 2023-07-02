@@ -24,11 +24,11 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Install Allure
+      - name: Install Allure CLI
         run: |
-          sudo apt-add-repository ppa:qameta/allure
-          sudo apt-get update
-          sudo apt-get install allure -y
+          wget https://github.com/allure-framework/allure2/releases/latest/download/allure-2.14.0.zip
+          unzip allure-2.14.0.zip
+          export PATH=$PATH:$PWD/allure-2.14.0/bin
 
       - name: Run tests with pytest
         run: pytest --alluredir=./allure-results
