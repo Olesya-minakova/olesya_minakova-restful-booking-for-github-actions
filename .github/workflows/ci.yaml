@@ -26,9 +26,15 @@ jobs:
 
       - name: Install Allure CLI
         run: |
-          wget https://github.com/allure-framework/allure2/releases/latest/download/allure-2.14.0.zip
+          curl -o allure-2.14.0.zip -Ls https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.14.0/allure-commandline-2.14.0.zip
           unzip allure-2.14.0.zip
           export PATH=$PATH:$PWD/allure-2.14.0/bin
+
+      - name: Run tests with pytest
+        run: pytest --alluredir=./allure-results
+
+      - name: Generate Allure report
+        run: allure generate ./allure-results --clean -o ./allure-report
 
       - name: Run tests with pytest
         run: pytest --alluredir=./allure-results
