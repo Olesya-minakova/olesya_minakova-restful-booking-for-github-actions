@@ -29,3 +29,18 @@ steps:
     pytest --alluredir=allure-report
   displayName: 'pytest'
 
+- script: |
+    git config --global user.name "your_github_name"
+    git config --global user.email "your_github_email"
+    git remote set-url origin https://$(gh-token)@github.com/your_github_name/your_repo.git
+    git clone https://$(gh-token)@github.com/your_github_name/your_repo.git
+    cd your_repo_name
+    git checkout -B gh-pages
+    cp -R ../allure-results/* .
+    cp -R ../gh-pages/history/* .    # Get Allure history
+    git add .
+    git commit -m "Update Allure report"
+    git push -f origin gh-pages
+  env:
+    GH_TOKEN: $(gh-token)
+  displayName: 'Push Allure reports to gh-pages'
