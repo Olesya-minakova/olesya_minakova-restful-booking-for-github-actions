@@ -31,10 +31,10 @@ steps:
 
 - script: |
     git config --global user.name "Olesya-minakova"
-    git config --global user.email "your_github_email"
+    git config --global user.email "olesya.minakova@quantori.com"
     git remote set-url origin https://github.com/Olesya-minakova/olesya_minakova-restful-booking-for-github-actions.git
     git clone https://$(gh-token)@github.com/Olesya-minakova/olesya_minakova-restful-booking-for-github-actions.git
-    cd your_repo_name
+    cd olesya_minakova-restful-booking-for-github-actions
     git checkout -B gh-pages
     cp -R ../allure-results/* .
     cp -R ../gh-pages/history/* .    # Get Allure history
