@@ -10,7 +10,7 @@ pool:
   vmImage: ubuntu-latest
 strategy:
   matrix:
-    Python37:
+    Python3.8:
       python.version: '3.8'
 
 steps:
@@ -27,6 +27,7 @@ steps:
 - script: |
     pip install pytest pytest-azurepipelines
     pytest
+    allure serve allure-results
   displayName: 'pytest'
 
 - script: |
