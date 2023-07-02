@@ -29,7 +29,3 @@ steps:
     pytest --alluredir=allure-report
   displayName: 'pytest'
 
-- script: |
-    allure serve allure-results
-  displayName: 'Allure report'
-  
