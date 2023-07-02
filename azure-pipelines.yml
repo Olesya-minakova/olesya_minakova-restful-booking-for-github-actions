@@ -30,10 +30,10 @@ steps:
   displayName: 'pytest'
 
 - script: |
-    git config --global user.name "your_github_name"
+    git config --global user.name "Olesya-minakova"
     git config --global user.email "your_github_email"
-    git remote set-url origin https://$(gh-token)@github.com/your_github_name/your_repo.git
-    git clone https://$(gh-token)@github.com/your_github_name/your_repo.git
+    git remote set-url origin https://github.com/Olesya-minakova/olesya_minakova-restful-booking-for-github-actions.git
+    git clone https://$(gh-token)@github.com/Olesya-minakova/olesya_minakova-restful-booking-for-github-actions.git
     cd your_repo_name
     git checkout -B gh-pages
     cp -R ../allure-results/* .
