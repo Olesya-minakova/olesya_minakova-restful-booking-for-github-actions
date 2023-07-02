@@ -28,16 +28,11 @@ jobs:
         run: |
           curl -o allure-2.14.0.zip -Ls https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.14.0/allure-commandline-2.14.0.zip
           unzip allure-2.14.0.zip
-          export PATH=$PATH:$PWD/allure-2.14.0/bin
+          echo "export PATH=\$PATH:$PWD/allure-2.14.0/bin" >> $GITHUB_ENV
 
       - name: Run tests with pytest
         run: pytest --alluredir=./allure-results
 
       - name: Generate Allure report
         run: allure generate ./allure-results --clean -o ./allure-report
-
-      - name: Run tests with pytest
-        run: pytest --alluredir=./allure-results
-
-      - name: Generate Allure report
-        run: allure generate ./allure-results --clean -o ./allure-report
+        
